@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'second_screen.dart';
 
+
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
 
@@ -12,10 +13,11 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Screen')),
+      appBar: AppBar(title: Text('Home Screen')), // Верхняя панель с заголовком
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center, // Центрируем элементы по вертикали
         children: [
+          // Кнопка для обычного перехода на SecondScreen
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -25,12 +27,14 @@ class _FirstScreenState extends State<FirstScreen> {
             },
             child: Text('Push'),
           ),
+          // Кнопка для перехода с использованием именованного маршрута
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/second');
             },
             child: Text('PushNamed'),
           ),
+          // Кнопка для замены текущего экрана на SecondScreen
           ElevatedButton(
             onPressed: () {
               Navigator.pushReplacement(
@@ -40,16 +44,18 @@ class _FirstScreenState extends State<FirstScreen> {
             },
             child: Text('PushReplacement'),
           ),
+          // Кнопка для перехода на SecondScreen с удалением всех предыдущих экранов
           ElevatedButton(
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => SecondScreen()),
-                (route) => false,
+                (route) => false, // Удаляет все предыдущие экраны из стека
               );
             },
             child: Text('PushAndRemoveUntil'),
           ),
+          // Кнопка для перехода по именованному маршруту с удалением всех предыдущих экранов
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(context, '/second', (route) => false);
